@@ -87,7 +87,7 @@ async function main() {
         const d = details[k] || {};
         const es = esCards.get(c.localId);
         let r = rarityCode(d.rarity);
-        if (r === 'X' && d.rarity) unknownRarities.add(d.rarity);
+        if (r === 'X' && d.rarity && d.rarity !== 'None') unknownRarities.add(d.rarity);
         if (rate?.tierOverrides) for (const [t, range] of Object.entries(rate.tierOverrides)) if (inRange(c.localId, range)) r = t;
         const cm = d.pricing?.cardmarket;
         return {
@@ -99,8 +99,9 @@ async function main() {
         };
       });
 
-      const type = rate?.type || (/\.5|\.\d[a-z]?$/.test(meta.id) ? 'special' : 'main');
-      const prods = products.sets[meta.id]?.products || products.defaults[type];
+      const isPromo = /promo|energy|first battle/i.test(meta.nameEn) || /^(mfb|svp|mep|sve|mee)$/.test(meta.id);
+      const type = isPromo ? 'promo' : rate?.type || (/\.5|\.\d[a-z]?$/.test(meta.id) ? 'special' : 'main');
+      const prods = products.sets[meta.id]?.products || products.defaults[type] || [];
       const setData = { ...meta, type, rates: rate ? { rare: rate.rare, hit: rate.hit, godPack: rate.godPack || null, source: rate.source, sample: rate.sample, note: rate.note || null } : null,
         products: prods, productsChecked: products.sets[meta.id]?.checked || null, priceUpdated: details.find(d => d?.pricing?.cardmarket?.updated)?.pricing.cardmarket.updated || null, cards };
 

@@ -97,7 +97,7 @@ function bindSearch(input, box) {
 
 // ---------- Inicio ----------
 function renderHome() {
-  const sets = INDEX.sets;
+  const sets = INDEX.sets.filter(s => s.type !== 'promo');
   const rated = sets.filter(s => s.hasRates);
   const popular = INDEX.cards.filter(c => c[7]).sort((a, b) => b[7] - a[7]).slice(0, 5);
   app.innerHTML = `
@@ -134,7 +134,7 @@ async function renderSet(id) {
   const set = await loadSet(id);
   const M = modelFor(set);
   document.title = set.name + ' · SobreJusto';
-  const pack = set.products.find(p => p.id === 'pack') || set.products[0];
+  const pack = set.products.find(p => p.id === 'pack') || set.products[0] || { id: 'pack', name: 'Sobre suelto', packs: 1, promo: 0, price: 6 };
   if (!selectedProduct || !set.products.some(p => p.id === selectedProduct)) selectedProduct = (set.products.find(p => p.id === 'etb') || pack).id;
 
   const head = `<section class="sethead">
@@ -303,7 +303,7 @@ async function renderCard(cardId) {
   if (!card) { app.innerHTML = '<p class="empty">No encontramos esa carta.</p>'; return; }
   document.title = card.name + ' · SobreJusto';
   const M = modelFor(set);
-  const pack = set.products.find(p => p.id === 'pack') || set.products[0];
+  const pack = set.products.find(p => p.id === 'pack') || set.products[0] || { id: 'pack', name: 'Sobre suelto', packs: 1, promo: 0, price: 6 };
   const single = buyPrice(card, S, FACTORS, OV);
   const pr = card.price || {};
   const versions = INDEX.cards.filter(c => c[4] === card.nameEn && c[0] !== card.id && c[7]).sort((a, b) => a[7] - b[7]).slice(0, 10);
