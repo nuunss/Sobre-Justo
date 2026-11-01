@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>SobreJusto</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="¿Cuánto vale de verdad un sobre de Pokémon TCG? Valor esperado de cada colección y producto sellado, y si te conviene comprar una carta suelta o abrir sobres.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="styles.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='6' y='2' width='20' height='28' rx='3' fill='%233346c8'/%3E%3Cpath d='M10 20l4 4 8-12' stroke='%23fff' stroke-width='3' fill='none'/%3E%3C/svg%3E">
+</head>
+<body>
+<header class="bar">
+  <div class="bar-in">
+    <a class="brand" href="#" aria-label="SobreJusto, inicio"><span class="brand-mark" aria-hidden="true"></span>Sobre<b>Justo</b></a>
+    <div class="search" role="search">
+      <input type="search" id="q" placeholder="Busca una carta: Gengar, Pikachu ex, 284…" autocomplete="off" aria-label="Buscar carta" aria-controls="qres" aria-expanded="false">
+      <div class="qres" id="qres" role="listbox" hidden></div>
+    </div>
+    <button class="icon-btn" id="openSettings" aria-label="Ajustes de cálculo" title="Ajustes de cálculo">
+      <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M4 7h10a3 3 0 0 0 6 0h0V5h0a3 3 0 0 0-6 0H4v2Zm13-2a1 1 0 1 1 0 2 1 1 0 0 1 0-2ZM4 17h3a3 3 0 0 0 6 0h7v-2h-7a3 3 0 0 0-6 0H4v2Zm6-2a1 1 0 1 1 0 2 1 1 0 0 1 0-2Z"/></svg>
+      <span>Ajustes</span>
+    </button>
+  </div>
+</header>
+
+<main id="app" class="wrap" aria-live="polite">
+  <p class="loading">Cargando colecciones…</p>
+</main>
+
+<footer class="foot wrap">
+  <p>Precios de cartas: Cardmarket vía <a href="https://tcgdex.dev" target="_blank" rel="noopener">TCGdex</a>, ajustados a carta en español. Probabilidades: estimaciones de la comunidad (PokéZentrum, TCGplayer). Pokémon y sus imágenes son propiedad de The Pokémon Company; esta web no está afiliada a ella.</p>
+  <p id="updated"></p>
+</footer>
+
+<dialog id="settings" aria-labelledby="settingsTitle">
+  <form method="dialog" class="settings">
+    <div class="settings-head"><h2 id="settingsTitle">Ajustes de cálculo</h2><button class="icon-btn" value="close" aria-label="Cerrar">✕</button></div>
+    <fieldset>
+      <legend>Precio de las cartas</legend>
+      <div class="seg" role="group" aria-label="Precio de referencia">
+        <button type="button" data-pf="trend">Tendencia</button>
+        <button type="button" data-pf="avg30">Media 30 días</button>
+        <button type="button" data-pf="low">Más bajo</button>
+      </div>
+      <label class="check"><input type="checkbox" id="s-esAdjust"> Ajustar a precio de carta en español</label>
+      <p class="hint">Cardmarket mezcla idiomas. En español, las cartas caras suelen costar entre un 15 % y un 40 % menos.</p>
+      <label class="field" for="s-saleFactor">Precio de venta realista <b id="s-saleFactorV"></b></label>
+      <input type="range" id="s-saleFactor" min="60" max="100" step="1">
+    </fieldset>
+    <fieldset>
+      <legend>Costes de venta</legend>
+      <div class="row2">
+        <label class="field">Comisión % <input type="number" id="s-fee" min="0" max="30" step="0.5"></label>
+        <label class="field">Envío por carta € <input type="number" id="s-ship" min="0" step="0.1"></label>
+        <label class="field">Umbral bulk € <input type="number" id="s-thr" min="0" step="0.25"></label>
+        <label class="field">Valor bulk € <input type="number" id="s-bulk" min="0" step="0.01"></label>
+      </div>
+    </fieldset>
+    <fieldset>
+      <legend>Extras</legend>
+      <label class="check"><input type="checkbox" id="s-godOn"> Incluir god pack (si la colección lo tiene)</label>
+      <label class="field">God pack: 1 de cada X sobres <input type="number" id="s-godX" min="100" step="100"></label>
+      <label class="check"><input type="checkbox" id="s-gradeOn"> Gradear las cartas top si compensa</label>
+      <div class="row2">
+        <label class="field">Prob. PSA 10 % <input type="number" id="s-p10" min="0" max="100"></label>
+        <label class="field">Multiplicador PSA 10 <input type="number" id="s-m10" min="1" step="0.1"></label>
+        <label class="field">Coste gradeo € <input type="number" id="s-gcost" min="0"></label>
+      </div>
+    </fieldset>
+    <div class="settings-foot">
+      <button type="button" class="btn" id="s-reset">Valores por defecto</button>
+      <button class="btn primary" value="close">Listo</button>
+    </div>
+  </form>
+</dialog>
+
+<script type="module" src="app.js"></script>
+</body>
+</html>

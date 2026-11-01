@@ -1,0 +1,14 @@
+{
+  "name": "sobrejusto",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Valor real de sobres y productos sellados de Pokémon TCG, y si conviene comprar suelta una carta o abrir sobres.",
+  "scripts": {
+    "data": "node scripts/fetch-data.mjs",
+    "test": "node --test test/*.test.mjs",
+    "preview-data": "node scripts/preview-data.mjs",
+    "serve": "node scripts/serve.mjs"
+  },
+  "engines": { "node": ">=20" }
+}

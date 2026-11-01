@@ -1,0 +1,33 @@
+{
+  "_comment": "Precios orientativos en tiendas españolas (EUR). Cada usuario puede editarlos en la web. 'defaults' se usa en colecciones sin lista propia.",
+  "defaults": {
+    "main": [
+      {"id": "pack", "name": "Sobre suelto", "packs": 1, "promo": 0, "price": 6.0},
+      {"id": "etb", "name": "Caja de Entrenador Élite", "packs": 9, "promo": 2, "price": 60.0},
+      {"id": "display", "name": "Caja de 36 sobres", "packs": 36, "promo": 0, "price": 190.0}
+    ],
+    "special": [
+      {"id": "pack", "name": "Sobre suelto", "packs": 1, "promo": 0, "price": 7.0},
+      {"id": "etb", "name": "Caja de Entrenador Élite", "packs": 9, "promo": 2, "price": 70.0},
+      {"id": "bundle", "name": "Lote de 6 sobres", "packs": 6, "promo": 0, "price": 40.0}
+    ]
+  },
+  "sets": {
+    "me02.5": {
+      "checked": "2026-11-01",
+      "products": [
+        {"id": "pack", "name": "Sobre suelto", "packs": 1, "promo": 0, "price": 7.41},
+        {"id": "blis2", "name": "Blíster 2 sobres + promo + moneda", "packs": 2, "promo": 1.5, "price": 15.90},
+        {"id": "tin", "name": "Minilata", "packs": 2, "promo": 0.5, "price": 22.90},
+        {"id": "blis3", "name": "Colección pegatinas (3 sobres)", "packs": 3, "promo": 1, "price": 22.90},
+        {"id": "exbox", "name": "Colección Mega Emboar / Meganium ex", "packs": 4, "promo": 3, "price": 49.90},
+        {"id": "fera", "name": "Colección Mega Feraligatr ex", "packs": 4, "promo": 3, "price": 54.90},
+        {"id": "pin", "name": "Colección pin Primeros Compañeros", "packs": 5, "promo": 3, "price": 40.90},
+        {"id": "bundle", "name": "Lote de 6 sobres", "packs": 6, "promo": 0, "price": 40.00},
+        {"id": "etb", "name": "Caja de Entrenador Élite", "packs": 9, "promo": 2, "price": 69.95},
+        {"id": "luca", "name": "Colección póster prémium Mega Lucario", "packs": 10, "promo": 3, "price": 129.90},
+        {"id": "gard", "name": "Colección póster prémium Mega Gardevoir", "packs": 10, "promo": 3, "price": 134.90}
+      ]
+    }
+  }
+}

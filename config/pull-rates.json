@@ -1,0 +1,54 @@
+{
+  "_comment": "Probabilidades por colección. 'rare' = hueco de rara (si no sale nada, es Rara normal). 'hit' = segundo hueco reverse, que puede convertirse en estas rarezas. Valores: 1 de cada X sobres. 'tierOverrides' fuerza la rareza de rangos de números cuando la API la etiqueta distinto.",
+  "sets": [
+    {
+      "match": ["Mega Evolution"], "ids": ["me01"], "type": "main",
+      "rare": {"DR": 5, "UR": 12}, "hit": {"IR": 9, "SIR": 101, "MHR": 1260},
+      "source": "PokéZentrum (agregado de aperturas)", "sample": null
+    },
+    {
+      "match": ["Phantasmal Flames"], "ids": ["me02"], "type": "main",
+      "rare": {"DR": 5, "UR": 12}, "hit": {"IR": 9, "SIR": 86, "MHR": 942},
+      "source": "PokéZentrum (agregado de aperturas)", "sample": null
+    },
+    {
+      "match": ["Ascended Heroes"], "ids": ["me02.5"], "type": "special",
+      "rare": {"DR": 5, "UR": 19, "MAR": 31}, "hit": {"IR": 8, "SIR": 75, "MHR": 810},
+      "tierOverrides": {"IR": "218-250", "UR": "251-264", "MAR": "265-271", "SIR": "272-293", "MHR": "294-295"},
+      "godPack": {"contents": {"SIR": 7, "MAR": 3}, "rateUnknown": true},
+      "source": "PokéZentrum (~4.000 sobres) y TCGplayer (~2.000)", "sample": 4000
+    },
+    {
+      "match": ["Perfect Order"], "ids": ["me03"], "type": "main",
+      "rare": {"DR": 5, "UR": 11}, "hit": {"IR": 9, "SIR": 75, "MHR": 1250},
+      "source": "PokéZentrum (agregado de aperturas)", "sample": null
+    },
+    {
+      "match": ["Chaos Rising"], "ids": ["me04"], "type": "main",
+      "rare": {"DR": 5, "UR": 12}, "hit": {"IR": 9, "SIR": 81, "MHR": 1150},
+      "source": "PokéZentrum (~4.500 sobres)", "sample": 4500
+    },
+    {
+      "match": ["Pitch Black"], "ids": ["me05"], "type": "main",
+      "rare": {"DR": 5, "UR": 12}, "hit": {"IR": 9, "SIR": 77, "MHR": 950},
+      "source": "PokéZentrum (~5.750 sobres)", "sample": 5750
+    },
+    {
+      "match": ["Destined Rivals"], "ids": ["sv10"], "type": "main",
+      "rare": {"DR": 5, "UR": 16}, "hit": {"IR": 12, "SIR": 94, "HR": 149},
+      "source": "TCGplayer (>8.000 sobres)", "sample": 8000
+    },
+    {
+      "match": ["Black Bolt"], "ids": ["sv10.5b"], "type": "special",
+      "rare": {"DR": 5, "UR": 17}, "hit": {"IR": 6, "SIR": 80, "BWR": 500},
+      "source": "PokéZentrum (BWR ~4.000 sobres)", "sample": 4000,
+      "note": "Los reverse con patrón Poké Ball (1/3) y Master Ball (1/19) se valoran como reverse normal."
+    },
+    {
+      "match": ["White Flare"], "ids": ["sv10.5w"], "type": "special",
+      "rare": {"DR": 5, "UR": 17}, "hit": {"IR": 6, "SIR": 80, "BWR": 500},
+      "source": "PokéZentrum (BWR ~4.000 sobres)", "sample": 4000,
+      "note": "Los reverse con patrón Poké Ball (1/3) y Master Ball (1/19) se valoran como reverse normal."
+    }
+  ]
+}
